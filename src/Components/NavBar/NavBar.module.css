@@ -1,4 +1,14 @@
-.Nave {
+.Nav {
   grid-area: nav;
   background-color: rgb(219, 131, 30);
+  padding: 20px;
+}
+
+.Item a {
+  color: white;
+  text-decoration: none;
+}
+
+.Item a.active {
+  color: gold;
 }

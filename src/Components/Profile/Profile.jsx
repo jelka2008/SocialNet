@@ -6,7 +6,7 @@ import Avatar from '../../image/avatar.jpeg';
 
 const  Profile = () => {
     return (
-        <div className={styles.Profile} >
+        <div >
             <div>
                 <img src={Cont} alt="Main content" />
             </div>
