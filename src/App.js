@@ -19,14 +19,11 @@ function App(props) {
            <Route path='/Profile' 
               render={ () => <Profile 
                 profilePage={props.state.profilePage}
-                addPost={props.addPost} 
-                updateNewPostText={props.updateNewPostText} /> } />  
+                dispatch={props.dispatch} /> } />  
            <Route path='/Dialogs' 
               render={ () => <Dialogs 
                 dialogsPage={props.state.dialogsPage} 
-                sendMessage={props.sendMessage}
-                updateMessageText={props.updateMessageText}
-              /> } />  
+                dispatch={props.dispatch} /> } />  
            <Route path='/Musik' render={ () => <Musik /> } />
         </div>
       </div>
