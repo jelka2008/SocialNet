@@ -1,7 +1,27 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
-const dialogsReducer = (state, action) =>{
+let initialState = {
+  messages: [
+    {id:1, message: 'Hi'},
+    {id:2, message: 'How is your learning?'},
+    {id:3, message: 'Yo'},
+    {id:4, message: 'Yo'},
+    {id:5, message: 'Yo'}
+    ],
+  newMessageText: '',
+  dialogs: [
+    {id: 1, name: 'Andrey', ava: '../../../image/104356.jpg'},
+    {id: 2, name: 'Nastja', ava: './image/95924.gif'},
+    {id: 3, name: 'Marina', ava: './image/104201.gif'},
+    {id: 4, name: 'Oleg', ava: './image/104105.gif'},
+    {id: 5, name: 'Victor', ava: './image/104036.gif'},
+    {id: 6, name: 'Anton', ava: './image/78907.gif'}
+    ]
+
+}
+
+const dialogsReducer = (state = initialState, action) =>{
 
   switch (action.type) {
     case SEND_MESSAGE:
@@ -10,7 +30,7 @@ const dialogsReducer = (state, action) =>{
         message: state.newMessageText
       }
       state.messages.push(newMessage);
-      state.newMessageText = 'пусто';
+      state.newMessageText = '';
       return state;
     case UPDATE_NEW_MESSAGE_TEXT:
       state.newMessageText = action.newText;

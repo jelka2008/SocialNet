@@ -1,4 +1,12 @@
-const navBarReducer = (state, action) =>{
+let initialState =  [
+    {id:1, name: 'Профиль', adres: 'Profile'},
+    {id:2, name: 'Сообщения', adres: 'Dialogs'},
+    {id:3, name: 'Новости', adres: 'News'},
+    {id:4, name: 'Музыка', adres: 'Musik'},
+    {id:5, name: 'Настройки', adres: 'Setting'}
+    ]
+
+const navBarReducer = (state = initialState, action) =>{
 
   return state
 }

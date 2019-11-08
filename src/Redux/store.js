@@ -11,7 +11,7 @@ let store = {
         {id:3, post: "It's my second post!", likesCount: 9},
         {id:4, post: "BlaBla", likesCount: 13},
         ],
-      newPostText: 'пусто', 
+      newPostText: 'пусто'
     },
     NavBars: [
       {id:1, name: 'Профиль', adres: 'Profile'},
@@ -36,7 +36,7 @@ let store = {
         {id: 4, name: 'Oleg', ava: './image/104105.gif'},
         {id: 5, name: 'Victor', ava: './image/104036.gif'},
         {id: 6, name: 'Anton', ava: './image/78907.gif'}
-        ],
+        ]
     }
   },
   _callSubscriber() {

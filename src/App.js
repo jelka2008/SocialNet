@@ -3,13 +3,13 @@ import { Route } from 'react-router-dom';
 import Header from './Components/Header/Header'
 import NavBar from './Components/NavBar/NavBar'
 import Profile from './Components/Profile/Profile'
-import Dialogs from './Components/Dialogs/Dialogs'
+import DialogsContainer from './Components/Dialogs/DialogsContainer'
 import Musik from './Components/Musik/Musik'
 
 import './App.css';
 
 function App(props) {
- 
+//  debugger
   return (
       
       <div className="App-wrapper">
@@ -18,12 +18,10 @@ function App(props) {
         <div className="App-wrapper-content"  >
            <Route path='/Profile' 
               render={ () => <Profile 
-                profilePage={props.state.profilePage}
-                dispatch={props.dispatch} /> } />  
+                store={props.store} /> } />  
            <Route path='/Dialogs' 
-              render={ () => <Dialogs 
-                dialogsPage={props.state.dialogsPage} 
-                dispatch={props.dispatch} /> } />  
+              render={ () => <DialogsContainer 
+                store={props.store} /> } />  
            <Route path='/Musik' render={ () => <Musik /> } />
         </div>
       </div>
