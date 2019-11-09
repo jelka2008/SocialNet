@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Header from './Components/Header/Header'
-import NavBar from './Components/NavBar/NavBar'
+import NavBarContainer from './Components/NavBar/NavBarContainer'
 import Profile from './Components/Profile/Profile'
 import DialogsContainer from './Components/Dialogs/DialogsContainer'
 import Musik from './Components/Musik/Musik'
@@ -14,14 +14,12 @@ function App(props) {
       
       <div className="App-wrapper">
         <Header />
-        <NavBar NavBars={props.state.NavBars} />
+        <NavBarContainer />
         <div className="App-wrapper-content"  >
            <Route path='/Profile' 
-              render={ () => <Profile 
-                store={props.store} /> } />  
+              render={ () => <Profile /> } />  
            <Route path='/Dialogs' 
-              render={ () => <DialogsContainer 
-                store={props.store} /> } />  
+              render={ () => <DialogsContainer />  } />  
            <Route path='/Musik' render={ () => <Musik /> } />
         </div>
       </div>
