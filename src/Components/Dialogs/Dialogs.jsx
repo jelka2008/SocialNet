@@ -6,13 +6,13 @@ import DialogsItem from './DialogItem/DialogItem'
 
 const  Dialogs = (props) => {
 // debugger
-  let dialogsElements = props.state.dialogs.map( dialog => <DialogsItem 
+  let dialogsElements = props.dialogsPage.dialogs.map( dialog => <DialogsItem 
     name={dialog.name} 
     id={dialog.id} 
     ava={dialog.ava}
      /> )
 
-  let messageElements = props.state.messages.map( message => <Message message={message.message} key={message.id} /> )
+  let messageElements = props.dialogsPage.messages.map( message => <Message message={message.message} key={message.id} /> )
 
   let onSendMessage = () => {
     props.sendMessage()
@@ -38,7 +38,7 @@ const  Dialogs = (props) => {
           <div>
             <textarea 
               onChange={onMessageChange}
-              value={props.state.newMessageText} 
+              value={props.dialogsPage.newMessageText} 
               placeholder='Enter your message' />
           </div>
         
