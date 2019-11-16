@@ -1,17 +1,14 @@
-import React from 'react';
-import styles from '../Dialogs.module.css'
-import {NavLink} from 'react-router-dom';
+import React from "react";
+import styles from "../Dialogs.module.css";
+import { NavLink } from "react-router-dom";
 
-
-const DialogsItem = (props) => {
+const DialogsItem = props => {
   return (
-    <div className={`${styles.dialog} ${styles.active}`} >
-      <img src={props.ava} alt='ava'></img>
-      <NavLink to={'/dialogs/' + props.id} >
-      {props.name}
-      </NavLink>
+    <div className={`${styles.dialog} ${styles.active}`}>
+      <img src={props.ava} alt="ava"></img>
+      <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
     </div>
-  )
-}
+  );
+};
 
-export default DialogsItem
+export default DialogsItem;

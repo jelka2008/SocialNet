@@ -1,20 +1,23 @@
-import React from 'react';
-import styles from './NavBar.module.css';
-import NavBarItem from './NavBarItem/NavBarItem'
+import React from "react";
+import styles from "./NavBar.module.css";
+import NavBarItem from "./NavBarItem/NavBarItem";
 
-const  NavBar = (props) => {
-// debugger
-    let NavBarElements = props.NavBars.map( NavBar => <NavBarItem name={NavBar.name} id={NavBar.id} adres={NavBar.adres} key={NavBar.id} /> )  
+const NavBar = props => {
+  // debugger
+  let NavBarElements = props.NavBars.map(NavBar => (
+    <NavBarItem
+      name={NavBar.name}
+      id={NavBar.id}
+      adres={NavBar.adres}
+      key={NavBar.id}
+    />
+  ));
 
-    return (
-        <nav className={styles.Nav} >
-            <div className={styles.Item} >
+  return (
+    <nav className={styles.Nav}>
+      <div className={styles.Item}>{NavBarElements}</div>
+    </nav>
+  );
+};
 
-                { NavBarElements }
-
-            </div>
-        </nav>
-    )
-}
-
-export default NavBar
+export default NavBar;

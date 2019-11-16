@@ -3,7 +3,6 @@
   grid-template-columns: 2fr 10fr;
 }
 
-
 .dialogsItem {
   padding: 10px;
   text-decoration: none;
@@ -16,7 +15,6 @@
 }
 
 .dialog {
-  
 }
 
 .messages {
@@ -24,7 +22,4 @@
 }
 
 .message {
-
 }
-
-
