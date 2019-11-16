@@ -1,21 +1,17 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS';
+const SET_USERS = 'SET_USERS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_SELECTED_PAGE = 'SET_SELECTED_PAGE'
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 
 
 let initialState =  {
-  users: [
-    // {id:1, photoUrl: 'https://www.chem.ucsb.edu/sites/default/files/styles/people_node/public/people/photo/Dmitriy_Propkopovich_004.jpg?itok=Zldkx-iH', 
-    //   followed: false, fullName: 'Dmitriy', status: 'I am a boss', location: {city:'Minsk', country: 'Belarus'} },
-    // {id:2, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2M6nAZx0bnCQgKnmaAXlYXSZblzSFqqhFXnXXqb1SXRcZ-TJn&s', 
-    //   followed: false, fullName: 'Alesja', status: 'I make photos', location: {city:'Moskow', country: 'Russia'} },
-    // {id:3, photoUrl: 'https://vokrug.tv/pic/person/5/b/f/0/5bf018d36c4ce8b75f8a9755d223e914.jpg', 
-    //   followed: true, fullName: 'Marina', status: 'I am a boss', location: {city:'Kiev', country: 'Ukraine'} },
-    // {id:4, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtTf948uYcHaMhlu9IS6tJFVsfWPUf6TiKzA-PKlxkRmDwwDp_&s', 
-    //   followed: false, fullName: 'Andrey', status: 'I am a boss', location: {city:'Minsk', country: 'Belarus'} },
-    // {id:5, photoUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCktZr_LvogZjeptetrpAQZMHFaR9pUpxMDZuavWklLcFQI6GH&s', 
-    //   followed: false, fullName: 'Anton', status: 'I am a boss too', location: {city:'Gomel', country: 'Belarus'} },
-    ]
+  users: [ ],
+  pageSize: 5,
+  currentPage: 1,
+  selectedPage: 1,
+  totalUsersCount: 10
   }
 
     const usersReducer = (state = initialState, action) => {
@@ -44,7 +40,16 @@ let initialState =  {
           }
         }
         case SET_USERS: {
-          return { ...state, users: [ ...state.users, ...action.users ] }
+          return { ...state, users: [ ...action.users ] }
+        }
+        case SET_CURRENT_PAGE: {
+          return { ...state, currentPage: action.pageNumber }
+        }
+        case SET_SELECTED_PAGE: {
+          return { ...state, selectedPage: action.pageNumber }
+        }
+        case SET_TOTAL_USERS_COUNT: {
+          return { ...state, totalUsersCount: action.count }
         }
         default:
           return state
@@ -56,5 +61,11 @@ export const followAC = (userId) => ({type: FOLLOW, userId})
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId })
 
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
+
+export const setCurrentPageAC = (pageNumber) => ({ type: SET_CURRENT_PAGE, pageNumber })
+
+export const setSelectedPageAC = (pageNumber) => ({ type: SET_SELECTED_PAGE, pageNumber })
+
+export const setTotalUsersCountAC = (count) => ({ type: SET_TOTAL_USERS_COUNT, count })
 
 export default usersReducer
