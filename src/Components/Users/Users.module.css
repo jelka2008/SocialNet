@@ -10,3 +10,11 @@
 .selectedPage {
   font-size: larger;
 }
+
+.changeCurrentPage {
+  font-size: large;
+}
+
+.listPageNumber {
+  width: 50px;
+}

@@ -1,26 +1,25 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Header from "./Components/Header/Header";
 import NavBarContainer from "./Components/NavBar/NavBarContainer";
-import Profile from "./Components/Profile/Profile";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import Musik from "./Components/Musik/Musik";
-import Users from "./Components/Users/Users";
-
 import "./App.css";
 import UsersContainer from "./Components/Users/UsersContainer";
+import HeaderContainer from "./Components/Header/HederContainer";
 
 function App(props) {
   //  debugger
   return (
     <div className="App-wrapper">
-      <Header />
+      <HeaderContainer />
       <NavBarContainer />
       <div className="App-wrapper-content">
-        <Route path="/Profile" render={() => <Profile />} />
-        <Route path="/Dialogs" render={() => <DialogsContainer />} />
-        <Route path="/Musik" render={() => <Musik />} />
-        <Route path="/Users" render={() => <UsersContainer />} />
+        <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+        <Route path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/musik" render={() => <Musik />} />
+        <Route path="/users" render={() => <UsersContainer />} />
+        {/* <Route path="/login" render={() => <UsersContainer />} /> */}
       </div>
     </div>
   );

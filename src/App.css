@@ -1,13 +1,13 @@
 .App-wrapper {
   display: grid;
-  grid-template-areas: 
-  "head head"
-  "nav cont";
+  grid-template-areas:
+    "head head"
+    "nav cont";
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
 
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -15,8 +15,3 @@
   grid-area: cont;
   background-color: rgb(80, 221, 221);
 }
-
-
-
-
-

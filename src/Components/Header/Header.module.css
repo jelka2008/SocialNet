@@ -1,8 +1,12 @@
-.Header img {
+.header img {
   width: 50px;
 }
 
-.Header {
+.header {
   grid-area: head;
   background-color: lawngreen;
+}
+
+.loginBlock {
+  float: right;
 }

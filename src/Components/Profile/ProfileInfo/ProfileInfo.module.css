@@ -1,3 +1,18 @@
 .description {
   padding: 10px;
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+}
+
+.emaile {
+  height: 200px;
+}
+
+.aboutMe {
+  background: rgb(18, 180, 185);
+}
+
+.fullName {
+  font-weight: bold;
+  font-size: large;
 }

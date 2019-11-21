@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Users.module.css";
 import userPhotos from "../../image/ava0.png";
+import { NavLink } from "react-router-dom";
 
 let Users = props => {
   let pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -11,9 +12,10 @@ let Users = props => {
 
   return (
     <div>
-      <div>
+      <div className={styles.listPageNumber}>
         {pages.map(p => {
           return (
+            // <div >
             <span
               className={
                 props.currentPage === p
@@ -28,28 +30,61 @@ let Users = props => {
               onMouseOver={() => {
                 props.setSelectedPage(p);
               }}
+              onMouseOut={() => {
+                props.setSelectedPage(null);
+              }}
             >
               {p}
             </span>
           );
         })}
       </div>
+      <div>
+        <span
+          className={styles.changeCurrentPage}
+          onClick={() => {
+            if (props.currentPage > 1)
+              props.onPageChange(props.currentPage - 1);
+          }}
+        >
+          Предыдущие записи &nbsp;
+        </span>
+        <span
+        // onMouseOver={() => {
+        //   props.setSelectedPage();
+        // }}
+        >
+          &hellip;
+        </span>
+        <span
+          className={styles.changeCurrentPage}
+          onClick={() => {
+            if (props.currentPage < pageCount)
+              props.onPageChange(props.currentPage + 1);
+          }}
+        >
+          &nbsp; Следующие записи
+        </span>
+      </div>
+
       {props.users.map(u => {
         return (
           <div key={u.id}>
             <span className={styles.left}>
               <div>
-                <img
-                  src={u.photos.small != null ? u.photos.small : userPhotos}
-                  alt="peaplsPhoto"
-                  className={styles.userPhoto}
-                />
+                <NavLink to={"/profile/" + u.id}>
+                  <img
+                    src={u.photos.small != null ? u.photos.small : userPhotos}
+                    alt="peaplsPhoto"
+                    className={styles.userPhoto}
+                  />
+                </NavLink>
               </div>
               <div>
                 {u.followed ? (
                   <button
                     onClick={() => {
-                      props.unfollow(u.id);
+                      props.onUnfollow(u.id);
                     }}
                   >
                     Unfollow
@@ -57,7 +92,7 @@ let Users = props => {
                 ) : (
                   <button
                     onClick={() => {
-                      props.follow(u.id);
+                      props.onFollow(u.id);
                     }}
                   >
                     Follow
