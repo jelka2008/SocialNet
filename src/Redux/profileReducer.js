@@ -1,3 +1,5 @@
+import { profileAPI } from "../API/API";
+
 import fb from "../image/ListSoc/facebook.png";
 import ws from "../image/ListSoc/znachok-jelektronnoj-pochty.png";
 import vk from "../image/ListSoc/vk.png";
@@ -77,5 +79,13 @@ export const updateNewPostText = text => ({
   newText: text
 });
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
+
+export const getUserProfile = userId => {
+  return dispatch => {
+    profileAPI.getUserProfile(userId).then(data => {
+      dispatch(setUserProfile(data));
+    });
+  };
+};
 
 export default profileReducer;
