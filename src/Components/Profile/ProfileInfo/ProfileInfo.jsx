@@ -10,12 +10,17 @@ import inst from "../../../image/ListSoc/instagram.png";
 import youtub from "../../../image/ListSoc/youtube.png";
 import gh from "../../../image/ListSoc/github.png";
 import mL from "../../../image/ListSoc/linkedin.png";
-import { NavLink } from "react-router-dom";
+import userPhotos from "../../../image/ava0.png";
 
 const ProfileInfo = props => {
   if (!props.profile) {
     return <Preloader />;
   }
+
+  let avatar =
+    props.profile.photos.large != null
+      ? props.profile.photos.large
+      : userPhotos;
   return (
     <div>
       <div>
@@ -23,7 +28,7 @@ const ProfileInfo = props => {
       </div>
       <div className={styles.description}>
         <div className={styles.photo}>
-          <img src={props.profile.photos.large} alt="avatar" />
+          <img src={avatar} alt="avatar" />
         </div>
         <div className={styles.aboutMe}>
           <div className={styles.fullName}>{props.profile.fullName}</div>

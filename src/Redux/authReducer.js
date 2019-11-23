@@ -1,3 +1,5 @@
+import { authAPI } from "../API/API";
+
 const SET_USERS_DATA = "SET_USERS_DATA";
 const SET_AUTH_USERS_PROFILE = "SET_AUTH_USERS_PROFILE";
 
@@ -39,5 +41,27 @@ export const setAuthUsersProfile = usersProfile => ({
   type: SET_AUTH_USERS_PROFILE,
   usersProfile
 });
+
+export const authMe = () => {
+  return dispatch => {
+    authAPI.getAuth().then(data => {
+      if (data.resultCode === 0) {
+        let { id, login, email } = data.data;
+        dispatch(setAuthUserData(id, login, email));
+        // debugger;
+        // axios
+        //   .get("https://social-network.samuraijs.com/api/1.0/profile/" + id, {
+        //     withCredentials: true
+        //   })
+        //   .then(response => {
+        //     this.props.setAuthUsersProfile(response.data);
+        //     // debugger;
+        //   });
+
+        // debugger;
+      }
+    });
+  };
+};
 
 export default authReducer;
