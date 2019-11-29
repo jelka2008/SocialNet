@@ -11,6 +11,7 @@ import youtub from "../../../image/ListSoc/youtube.png";
 import gh from "../../../image/ListSoc/github.png";
 import mL from "../../../image/ListSoc/linkedin.png";
 import userPhotos from "../../../image/ava0.png";
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 
 const ProfileInfo = props => {
   if (!props.profile) {
@@ -23,12 +24,11 @@ const ProfileInfo = props => {
       : userPhotos;
   return (
     <div>
-      <div>
-        <img src={Content} alt="Main content" />
-      </div>
+      <div>{/* <img src={Content} alt="Main content" /> */}</div>
       <div className={styles.description}>
         <div className={styles.photo}>
           <img src={avatar} alt="avatar" />
+          <ProfileStatus status={"У меня есть план!!!"} />
         </div>
         <div className={styles.aboutMe}>
           <div className={styles.fullName}>{props.profile.fullName}</div>

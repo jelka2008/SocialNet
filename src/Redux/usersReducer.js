@@ -138,4 +138,11 @@ export const acceptUnfollow = userId => {
   };
 };
 
+export const pageChange = (pageNumber, pageSize) => {
+  return dispatch => {
+    dispatch(setCurrentPage(pageNumber));
+    dispatch(getUsers(pageNumber, pageSize));
+  };
+};
+
 export default usersReducer;

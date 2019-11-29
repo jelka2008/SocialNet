@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import {
-  setAuthUserData,
   // setAuthUsersProfile
   authMe
 } from "../../Redux/authReducer";
@@ -20,6 +19,4 @@ const mapStateToProps = state => ({
   login: state.auth.login
 });
 
-export default connect(mapStateToProps, { setAuthUserData, authMe })(
-  HeaderContainer
-);
+export default connect(mapStateToProps, { authMe })(HeaderContainer);

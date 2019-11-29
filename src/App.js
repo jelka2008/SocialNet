@@ -7,6 +7,7 @@ import Musik from "./Components/Musik/Musik";
 import "./App.css";
 import UsersContainer from "./Components/Users/UsersContainer";
 import HeaderContainer from "./Components/Header/HederContainer";
+import LoginPage from "./Login/LoginPage";
 
 function App(props) {
   //  debugger
@@ -19,7 +20,7 @@ function App(props) {
         <Route path="/dialogs" render={() => <DialogsContainer />} />
         <Route path="/musik" render={() => <Musik />} />
         <Route path="/users" render={() => <UsersContainer />} />
-        {/* <Route path="/login" render={() => <UsersContainer />} /> */}
+        <Route path="/login" render={() => <LoginPage />} />
       </div>
     </div>
   );
