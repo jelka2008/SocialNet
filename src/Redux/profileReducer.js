@@ -87,8 +87,11 @@ export const updateNewPostText = text => ({
 });
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
 
+<<<<<<< HEAD
 export const setStatus = status => ({ type: SET_STATUS, status });
 
+=======
+>>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
 export const getUserProfile = userId => {
   return dispatch => {
     profileAPI.getUserProfile(userId).then(data => {
@@ -97,6 +100,7 @@ export const getUserProfile = userId => {
   };
 };
 
+<<<<<<< HEAD
 export const getStatus = userId => {
   return dispatch => {
     profileAPI.getStatus(userId).then(response => {
@@ -115,4 +119,6 @@ export const updateStatus = status => {
   };
 };
 
+=======
+>>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
 export default profileReducer;
