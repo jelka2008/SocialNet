@@ -12,6 +12,7 @@ import mL from "../image/ListSoc/linkedin.png";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const SET_STATUS = "SET_STATUS";
 
 let initialState = {
   posts: [
@@ -22,6 +23,7 @@ let initialState = {
   ],
   newPostText: "",
   profile: null,
+  status: "",
   listCont: [
     { id: 1, email: null, img: fb },
     { id: 2, email: null, img: ws },
@@ -35,7 +37,6 @@ let initialState = {
 };
 
 const profileReducer = (state = initialState, action) => {
-  // debugger
   switch (action.type) {
     case ADD_POST: {
       let newPost = {
@@ -61,6 +62,12 @@ const profileReducer = (state = initialState, action) => {
         profile: action.profile
       };
     }
+    case SET_STATUS: {
+      return {
+        ...state,
+        status: action.status
+      };
+    }
     // case SET_EMAIL_ADRESS: {
     //   return {
     //     ...state,
@@ -80,10 +87,30 @@ export const updateNewPostText = text => ({
 });
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
 
+export const setStatus = status => ({ type: SET_STATUS, status });
+
 export const getUserProfile = userId => {
   return dispatch => {
     profileAPI.getUserProfile(userId).then(data => {
       dispatch(setUserProfile(data));
+    });
+  };
+};
+
+export const getStatus = userId => {
+  return dispatch => {
+    profileAPI.getStatus(userId).then(response => {
+      dispatch(setStatus(response.data));
+    });
+  };
+};
+
+export const updateStatus = status => {
+  return dispatch => {
+    profileAPI.updateStatus(status).then(response => {
+      if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+      }
     });
   };
 };

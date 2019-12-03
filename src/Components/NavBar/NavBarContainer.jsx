@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 let mapStateToProps = state => {
   return {
-    NavBars: state.NavBars
+    NavBars: state.NavBars,
+    myId: state.auth.id
   };
 };
 

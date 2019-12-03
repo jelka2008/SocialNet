@@ -65,6 +65,14 @@ let Users = props => {
         >
           &nbsp; Следующие записи
         </span>
+        <span
+          // className={styles.changeCurrentPage}
+          onClick={() => {
+            props.onPageChange(pageCount);
+          }}
+        >
+          &nbsp; Последние записи
+        </span>
       </div>
 
       {props.users.map(u => {
