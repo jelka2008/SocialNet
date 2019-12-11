@@ -1,14 +1,13 @@
 import { authAPI } from "../API/API";
+import { stopSubmit } from "redux-form";
 
 const SET_USERS_DATA = "SET_USERS_DATA";
-const SET_AUTH_USERS_PROFILE = "SET_AUTH_USERS_PROFILE";
 
 let initialState = {
-  id: null,
+  userId: null,
   login: null,
   email: null,
-  isAuth: false,
-  authUsersProfile: null
+  isAuth: false
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,15 +15,7 @@ const authReducer = (state = initialState, action) => {
     case SET_USERS_DATA: {
       return {
         ...state,
-        ...action.data,
-        isAuth: true
-      };
-    }
-    case SET_AUTH_USERS_PROFILE: {
-      return {
-        ...state,
-        authUsersProfile: [...action.usersProfile]
-        // isAuth: true
+        ...action.payload
       };
     }
     default:
@@ -32,33 +23,41 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setAuthUserData = (id, login, email) => ({
+export const setAuthUserData = (userId, login, email, isAuth) => ({
   type: SET_USERS_DATA,
-  data: { id, login, email }
+  payload: { userId, login, email, isAuth }
 });
 
-export const setAuthUsersProfile = usersProfile => ({
-  type: SET_AUTH_USERS_PROFILE,
-  usersProfile
-});
+export const getAuthUserData = () => dispatch => {
+  return authAPI.getAuth().then(data => {
+    if (data.resultCode === 0) {
+      let { id, login, email } = data.data;
+      dispatch(setAuthUserData(id, login, email, true));
+    }
+  });
+};
 
-export const authMe = () => {
+export const login = (email, password, rememberMe) => {
   return dispatch => {
-    authAPI.getAuth().then(data => {
-      if (data.resultCode === 0) {
-        let { id, login, email } = data.data;
-        dispatch(setAuthUserData(id, login, email));
-        // debugger;
-        // axios
-        //   .get("https://social-network.samuraijs.com/api/1.0/profile/" + id, {
-        //     withCredentials: true
-        //   })
-        //   .then(response => {
-        //     this.props.setAuthUsersProfile(response.data);
-        //     // debugger;
-        //   });
+    authAPI.login(email, password, rememberMe).then(response => {
+      if (response.data.resultCode === 0) {
+        dispatch(getAuthUserData());
+      } else {
+        let message =
+          response.data.messages.length > 0
+            ? response.data.messages[0]
+            : "Some error";
+        dispatch(stopSubmit("login", { _error: message }));
+      }
+    });
+  };
+};
 
-        // debugger;
+export const logout = () => {
+  return dispatch => {
+    authAPI.logout().then(response => {
+      if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false));
       }
     });
   };

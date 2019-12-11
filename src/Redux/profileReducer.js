@@ -10,7 +10,6 @@ import gh from "../image/ListSoc/github.png";
 import mL from "../image/ListSoc/linkedin.png";
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
 
@@ -21,7 +20,6 @@ let initialState = {
     { id: 3, post: "It's my second post!", likesCount: 9 },
     { id: 4, post: "BlaBla", likesCount: 13 }
   ],
-  newPostText: "",
   profile: null,
   status: "",
   listCont: [
@@ -41,19 +39,13 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       let newPost = {
         id: 5,
-        post: state.newPostText,
+        post: action.newPostText,
         likesCount: 0
       };
       return {
         ...state,
         posts: [...state.posts, newPost],
         newPostText: ""
-      };
-    }
-    case UPDATE_NEW_POST_TEXT: {
-      return {
-        ...state,
-        newPostText: action.newText
       };
     }
     case SET_USER_PROFILE: {
@@ -79,19 +71,12 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const addPost = () => ({ type: ADD_POST });
+export const addPost = newPostText => ({ type: ADD_POST, newPostText });
 
-export const updateNewPostText = text => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text
-});
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile });
 
-<<<<<<< HEAD
 export const setStatus = status => ({ type: SET_STATUS, status });
 
-=======
->>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
 export const getUserProfile = userId => {
   return dispatch => {
     profileAPI.getUserProfile(userId).then(data => {
@@ -100,7 +85,6 @@ export const getUserProfile = userId => {
   };
 };
 
-<<<<<<< HEAD
 export const getStatus = userId => {
   return dispatch => {
     profileAPI.getStatus(userId).then(response => {
@@ -119,6 +103,4 @@ export const updateStatus = status => {
   };
 };
 
-=======
->>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
 export default profileReducer;

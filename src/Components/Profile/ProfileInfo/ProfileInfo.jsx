@@ -11,10 +11,7 @@ import youtub from "../../../image/ListSoc/youtube.png";
 import gh from "../../../image/ListSoc/github.png";
 import mL from "../../../image/ListSoc/linkedin.png";
 import userPhotos from "../../../image/ava0.png";
-<<<<<<< HEAD
 import ProfileStatus from "../ProfileStatus/ProfileStatus";
-=======
->>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
 
 const ProfileInfo = props => {
   if (!props.profile) {
@@ -31,13 +28,10 @@ const ProfileInfo = props => {
       <div className={styles.description}>
         <div className={styles.photo}>
           <img src={avatar} alt="avatar" />
-<<<<<<< HEAD
           <ProfileStatus
             status={props.status}
             updateStatus={props.updateStatus}
           />
-=======
->>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
         </div>
         <div className={styles.aboutMe}>
           <div className={styles.fullName}>{props.profile.fullName}</div>

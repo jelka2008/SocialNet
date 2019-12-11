@@ -16,11 +16,7 @@ let initialState = {
   selectedPage: 1,
   totalUsersCount: 10,
   isFetching: false,
-<<<<<<< HEAD
   followingInProgress: []
-=======
-  followingInProgress: [2, 3]
->>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -142,7 +138,6 @@ export const acceptUnfollow = userId => {
   };
 };
 
-<<<<<<< HEAD
 export const pageChange = (pageNumber, pageSize) => {
   return dispatch => {
     dispatch(setCurrentPage(pageNumber));
@@ -150,6 +145,4 @@ export const pageChange = (pageNumber, pageSize) => {
   };
 };
 
-=======
->>>>>>> a0728c37aff8d50e790bae9c2d1d1f2a51b7f285
 export default usersReducer;

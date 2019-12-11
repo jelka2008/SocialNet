@@ -15,7 +15,6 @@ let Users = props => {
       <div className={styles.listPageNumber}>
         {pages.map(p => {
           return (
-            // <div >
             <span
               className={
                 props.currentPage === p
