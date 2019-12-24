@@ -103,7 +103,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   userId
 });
 
-export const getUsers = (pageNumber, pageSize) => {
+export const requestUsers = (pageNumber, pageSize) => {
   return dispatch => {
     dispatch(toggleIsFetching(true));
     usersAPI.getUsers(pageNumber, pageSize).then(data => {
@@ -141,7 +141,7 @@ export const acceptUnfollow = userId => {
 export const pageChange = (pageNumber, pageSize) => {
   return dispatch => {
     dispatch(setCurrentPage(pageNumber));
-    dispatch(getUsers(pageNumber, pageSize));
+    dispatch(requestUsers(pageNumber, pageSize));
   };
 };
 

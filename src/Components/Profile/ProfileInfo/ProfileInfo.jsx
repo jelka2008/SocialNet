@@ -11,7 +11,7 @@ import youtub from "../../../image/ListSoc/youtube.png";
 import gh from "../../../image/ListSoc/github.png";
 import mL from "../../../image/ListSoc/linkedin.png";
 import userPhotos from "../../../image/ava0.png";
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = props => {
   if (!props.profile) {
@@ -28,7 +28,7 @@ const ProfileInfo = props => {
       <div className={styles.description}>
         <div className={styles.photo}>
           <img src={avatar} alt="avatar" />
-          <ProfileStatus
+          <ProfileStatusWithHooks
             status={props.status}
             updateStatus={props.updateStatus}
           />
